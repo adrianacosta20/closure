@@ -2,22 +2,43 @@
 // Challenge 1
 // Create a function createFunction that creates and returns a function. When that created function is called, it should print "hello". 
 
- var function1 = createFunction();
- // now we'll call the function we just created
- function1(); //should console.log('hello'); 
+// var function1 = createFunction();
+// now we'll call the function we just created
+// function1(); //should console.log('hello'); 
+
+function createFunction() {
+  function insideFunction() {
+    return 'hello';
+  };
+  return insideFunction();
+};
+
+console.log('Challenge 1', createFunction());
 
 //  When you think you completed createFunction, un-comment out those lines in the code and run it to see if it works. 
- 
+
 
 // Challenge 2
 // Create a function createFunctionPrinter that accepts one input and returns a function. When that created function is called, it should print out the input that was used when the function was created. 
 
-var printSample = createFunctionPrinter('sample');
+// var printSample = createFunctionPrinter('sample');
 
-var printHello = createFunctionPrinter('hello') 
+// var printHello = createFunctionPrinter('hello')
 // now we'll call the functions we just created printSample(); 
 // should console.log('sample'); printHello(); 
 // should console.log('hello'); 
+
+function createFunctionPrinter(input){
+  function print(input){
+    return input;
+  };
+  return print(input);
+};
+
+console.log('Challenge 2', createFunctionPrinter('Hello'));
+console.log('Challenge 2', createFunctionPrinter('Hola'));
+console.log('Challenge 2', createFunctionPrinter('Bonjour'));
+
 
 // Challenge 3
 // Examine the code for the outer function. Notice that we are returning a function and that function is using variables that are outside of its scope. Uncomment those lines of code. Try to deduce the output before executing. 
@@ -31,15 +52,15 @@ function outer() {
   return incrementCounter;
 }
 
-//var willCounter = outer();
-// var jasCounter = outer();
+var willCounter = outer();
+var jasCounter = outer();
 
 // Uncomment each of these lines one by one.
 // Before your do, guess what will be logged from each function call.
 
-// willCounter();
-// willCounter();
-// willCounter();
+willCounter();//1
+willCounter();//2
+willCounter();//3
 
-// jasCounter();
-// willCounter();
+jasCounter();//1
+willCounter();//4
